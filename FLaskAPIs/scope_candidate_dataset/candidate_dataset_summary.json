@@ -1,0 +1,47 @@
+{
+  "raw_rows": 15930,
+  "clean_rows": 14850,
+  "distinct_runs": 5,
+  "split_rows": {
+    "train": 8910,
+    "validation": 2970,
+    "test": 2970
+  },
+  "split_run_ids": {
+    "test": [
+      "iteration_5"
+    ],
+    "validation": [
+      "iteration_3"
+    ],
+    "train": [
+      "iteration_4",
+      "iteration_2",
+      "iteration_1"
+    ]
+  },
+  "action_unique_values": {
+    "candidate_alpha": 19,
+    "candidate_w_load_0": 9,
+    "candidate_w_load_1": 9,
+    "candidate_w_load_2": 9,
+    "candidate_threshold_0": 16,
+    "candidate_threshold_1": 16,
+    "candidate_threshold_2": 16
+  },
+  "low_variation_action_warning": [],
+  "targets": {
+    "target_failure_rate": {
+      "mean": 0.15073179536251194,
+      "std": 0.21773386066984368,
+      "min": 0.0,
+      "max": 0.7353648757016841
+    },
+    "target_deadline_norm_service_time": {
+      "mean": 0.8721187073971947,
+      "std": 0.22192580946212243,
+      "min": 0.5327461065548065,
+      "max": 1.6538610651089858
+    }
+  }
+}

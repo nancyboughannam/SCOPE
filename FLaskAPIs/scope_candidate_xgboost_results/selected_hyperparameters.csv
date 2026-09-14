@@ -1,0 +1,13 @@
+app_id,target,model_type,validation_mae,best_iteration,max_depth,learning_rate,min_child_weight,subsample,colsample_bytree
+0,failure_rate,state_only_xgboost,0.06333343187230144,144,3,0.04,5,0.85,0.85
+0,failure_rate,candidate_aware_xgboost,0.01056511301245477,1347,4,0.03,3,0.85,0.9
+0,deadline_norm_service_time,state_only_xgboost,0.06332233683584099,209,3,0.04,5,0.85,0.85
+0,deadline_norm_service_time,candidate_aware_xgboost,0.02179145486788577,779,4,0.03,3,0.85,0.9
+1,failure_rate,state_only_xgboost,0.06353807528757895,144,3,0.04,5,0.85,0.85
+1,failure_rate,candidate_aware_xgboost,0.010763258584129473,1090,4,0.03,3,0.85,0.9
+1,deadline_norm_service_time,state_only_xgboost,0.06551921584913811,223,2,0.05,5,0.9,0.9
+1,deadline_norm_service_time,candidate_aware_xgboost,0.01751991797635612,1321,4,0.03,3,0.85,0.9
+2,failure_rate,state_only_xgboost,0.06435204852580555,146,3,0.04,5,0.85,0.85
+2,failure_rate,candidate_aware_xgboost,0.012393949367872543,1510,4,0.03,3,0.85,0.9
+2,deadline_norm_service_time,state_only_xgboost,0.07130955547708037,239,2,0.05,5,0.9,0.9
+2,deadline_norm_service_time,candidate_aware_xgboost,0.020462937085098918,1082,4,0.03,3,0.85,0.9

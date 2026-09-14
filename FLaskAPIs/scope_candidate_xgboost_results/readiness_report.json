@@ -1,0 +1,84 @@
+{
+  "status": "READY_FOR_OPTIMIZER_INTEGRATION_TEST",
+  "interpretation": "Held-out prediction is useful and candidate features add measurable information beyond workload/state for most app-target models.",
+  "criteria": {
+    "all_candidate_models_beat_training_mean": true,
+    "candidate_features_add_consistent_test_value": true,
+    "predictions_change_when_candidate_changes": true
+  },
+  "comparison_details": [
+    {
+      "app_id": 0,
+      "target": "deadline_norm_service_time",
+      "candidate_test_mae": 0.02300600392030603,
+      "state_only_test_mae": 0.06699173554173256,
+      "training_mean_test_mae": 0.13235152855305937,
+      "relative_improvement_vs_mean": 0.8261750040077325,
+      "relative_improvement_vs_state_only": 0.6565844468087497,
+      "median_fixed_state_prediction_range": 0.6010260879993439,
+      "beats_mean": true,
+      "beats_state_only": true
+    },
+    {
+      "app_id": 0,
+      "target": "failure_rate",
+      "candidate_test_mae": 0.011790991849744923,
+      "state_only_test_mae": 0.07131612160916011,
+      "training_mean_test_mae": 0.18070377357815226,
+      "relative_improvement_vs_mean": 0.9347496091737927,
+      "relative_improvement_vs_state_only": 0.8346658289360699,
+      "median_fixed_state_prediction_range": 0.5862964987754822,
+      "beats_mean": true,
+      "beats_state_only": true
+    },
+    {
+      "app_id": 1,
+      "target": "deadline_norm_service_time",
+      "candidate_test_mae": 0.02036082340066839,
+      "state_only_test_mae": 0.07203095550384545,
+      "training_mean_test_mae": 0.1519610161939881,
+      "relative_improvement_vs_mean": 0.8660128504624076,
+      "relative_improvement_vs_state_only": 0.7173323155545063,
+      "median_fixed_state_prediction_range": 0.7155055403709412,
+      "beats_mean": true,
+      "beats_state_only": true
+    },
+    {
+      "app_id": 1,
+      "target": "failure_rate",
+      "candidate_test_mae": 0.012060877255687136,
+      "state_only_test_mae": 0.0716076011053094,
+      "training_mean_test_mae": 0.18264294940150044,
+      "relative_improvement_vs_mean": 0.9339647257383369,
+      "relative_improvement_vs_state_only": 0.8315698742937938,
+      "median_fixed_state_prediction_range": 0.5705366432666779,
+      "beats_mean": true,
+      "beats_state_only": true
+    },
+    {
+      "app_id": 2,
+      "target": "deadline_norm_service_time",
+      "candidate_test_mae": 0.021959139512665163,
+      "state_only_test_mae": 0.07932822485724152,
+      "training_mean_test_mae": 0.20423663385854432,
+      "relative_improvement_vs_mean": 0.892481877037426,
+      "relative_improvement_vs_state_only": 0.7231862990482559,
+      "median_fixed_state_prediction_range": 0.7057180106639862,
+      "beats_mean": true,
+      "beats_state_only": true
+    },
+    {
+      "app_id": 2,
+      "target": "failure_rate",
+      "candidate_test_mae": 0.013471391253774445,
+      "state_only_test_mae": 0.07200404351376054,
+      "training_mean_test_mae": 0.1878591726262488,
+      "relative_improvement_vs_mean": 0.9282899468498343,
+      "relative_improvement_vs_state_only": 0.8129078507764643,
+      "median_fixed_state_prediction_range": 0.5952347218990326,
+      "beats_mean": true,
+      "beats_state_only": true
+    }
+  ],
+  "important_caution": "Candidate sensitivity is a model diagnostic, not proof of causal effect. Do not tune hyperparameters after inspecting the test iteration."
+}

@@ -1,0 +1,74 @@
+# ----------------------------
+# OS & System Files
+# ----------------------------
+# macOS
+.DS_Store*
+Icon?
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+*~
+
+# ----------------------------
+# Build / Output folders
+# ----------------------------
+bin
+sim_results
+
+# ----------------------------
+# IDE / Editor Settings
+# ----------------------------
+# Eclipse
+.settings
+.classpath
+.project
+
+# IntelliJ IDEA
+.idea
+*.iml
+out
+gen
+
+# VS Code
+.vscode/
+
+# ----------------------------
+# Python Specific
+# ----------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Unit test / coverage reports
+.pytest_cache/
+.coverage
+htmlcov/
+nosetests.xml
+coverage.xml
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Logs / temp files
+*.log
+*.tmp
+*.bak

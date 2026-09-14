@@ -1,0 +1,35 @@
+Extract SCOPE results and compare paired iterations, without simulation reruns.
+
+Install: python3 -m pip install numpy scipy
+Run: python3 scope_statistics.py --input /path/to/sim_results
+Default: ite1..ite10, 1800 vehicles, ALL_APPS, three external comparisons.
+Input may also be a ZIP. Use --iterations 3 for the sample only.
+Use --vehicles 100 200 300 ... to explicitly select additional loads.
+Use --baselines SOFTCOST_OPT PERFORMANCE_ONLY RT_OPT for separate ablation logs
+(identifiers must match filenames). This extracts failure and service metrics;
+churn requires separate decision logs and is NOT inferred here.
+
+Outputs: raw_results.csv, paired_differences.csv, statistics.csv, table.md,
+table.tex and methods.txt. Existing output files with these names are replaced.
+Iteration IDs are pairing keys, NOT verified seed IDs: confirm matching seeds
+across policies and independent seeds across iterations from your run setup.
+
+Metric mapping matches supplied plotGenericLine / plotAvgFailedTask /
+plotAvgServiceTime: first numeric row, col2/(col1+col2)*100, and col5.
+Service time is seconds; this does NOT calculate deadline-normalized time.
+
+Statistics: two-sided exact signed-rank sign randomization (average tied ranks,
+zero differences discarded); paired rank-biserial effect size; percentile 95%
+bootstrap CI of mean paired difference (50,000 resamples, reproducible RNG).
+Positive baseline-minus-SCOPE differences/effects favor SCOPE for both metrics.
+Holm correction covers ALL comparisons/metrics/loads/apps in one invocation.
+CIs are pointwise, not multiplicity-adjusted, and concern the mean difference;
+Wilcoxon tests symmetry about zero, not the mean. Interpretation as a location
+shift assumes symmetric paired differences. Independent seed pairs required.
+Small-sample bootstrap CIs can be unstable; 3-run outputs are demonstration only.
+Reference: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html
+
+
+Positive differences and rank-biserial effects favor SCOPE. Failure differences are percentage points; service differences are seconds. 95% CIs are paired percentile-bootstrap intervals for mean differences, not simultaneous intervals. Holm adjustment covers all 108 tests in this invocation. Pairing uses iteration folders; actual seeds must be confirmed from the run setup.
+
+Arguments: Namespace(input='/Users/nancyboughannam/Documents/ThreeBrains/sim_results/full study', output='scope_statistics_results', iterations=10, vehicles=[100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800], apps=['ALL_APPS'], scope='RT_OPT_ML', baselines=['EXP3_MC', 'RAIDER_TRAX', 'RANDOM'], bootstrap=50000, rng_seed=20260912)
