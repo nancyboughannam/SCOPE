@@ -74,6 +74,11 @@ coverage.xml
 .ipynb_checkpoints
 
 # Logs / temp files
+# NOTE: *.log is scoped to exclude sim_results/ below — EdgeCloudSim's real
+# simulation output (the paper's actual result data) is also named *.log
+# (e.g. SIMRESULT_..._GENERIC.log), and a blanket *.log rule was silently
+# eating all of it. This line only ignores stray logs elsewhere.
 *.log
+!sim_results/**/*.log
 *.tmp
 *.bak
