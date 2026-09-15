@@ -7,6 +7,21 @@
 > `LICENSE` here and `../NOTICE.md` for what that means. For SCOPE's own
 > setup and reproduction instructions, see the [root README](../README.md).
 
+>
+> **Files modified from upstream EdgeCloudSim (as of 2026-09-15):**
+> `src/edu/boun/edgecloudsim/edge_server/EdgeServerManager.java`,
+> `src/edu/boun/edgecloudsim/edge_client/Task.java`,
+> `src/edu/boun/edgecloudsim/utils/SimUtils.java`,
+> `src/edu/boun/edgecloudsim/utils/SimLogger.java`,
+> `src/edu/boun/edgecloudsim/edge_orchestrator/EdgeOrchestrator.java`,
+> `src/edu/boun/edgecloudsim/applications/sample_app5/VehicularMainApp.java`,
+> `src/edu/boun/edgecloudsim/applications/sample_app5/VehicularEdgeOrchestrator.java`,
+> `src/edu/boun/edgecloudsim/applications/sample_app5/VehicularLoadGenerator.java`,
+> `src/edu/boun/edgecloudsim/applications/sample_app5/VehicularMobileDeviceManager.java`.
+> All other files under `src/` are unmodified from upstream, except
+> `src/edu/boun/edgecloudsim/task_generator/RushHourLoadGenerator.java`, which
+> is new code with no upstream counterpart.
+
 # EdgeCloudSim
 
 [![GitHub stars](https://img.shields.io/github/stars/CagataySonmez/EdgeCloudSim?style=for-the-badge)](https://github.com/CagataySonmez/EdgeCloudSim/stargazers)

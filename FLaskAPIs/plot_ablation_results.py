@@ -11,6 +11,7 @@ individual optimizer decisions are used only for descriptive churn ECDFs.
 from __future__ import annotations
 
 import math
+import os
 import re
 from pathlib import Path
 from typing import Iterable
@@ -58,22 +59,41 @@ HATCHES = {
 }
 
 
-# ===== HARD-CODED ABLATION LOCATIONS CHANGE START =====
-# The script can now be started directly with:
+# ===== REPO-RELATIVE ABLATION LOCATIONS CHANGE START =====
+# The script can be started directly with:
 #     python plot_ablation_results.py
 #
-# Simulator files are stored in ite1, ite2, ... below this directory.
+# All three locations default to paths relative to this file, so a fresh
+# clone works without edits. Override any of them with an environment
+# variable if your layout differs (e.g. if EdgeCloudSim's raw output lives
+# somewhere else on disk).
+BASE_DIR = Path(__file__).resolve().parent
+
+# Simulator files (EdgeCloudSim's *ALL_APPS_GENERIC.log output) are stored in
+# ite1, ite2, ... below this directory.
+#
+# IMPORTANT: this is the ABLATION study's raw sim output, which is a
+# different run from - and lives in a different place than -
+# ThreeBrains/sim_results/ (that folder holds the MAIN scalability
+# comparison's raw logs; using it here would silently score this table
+# against the wrong data). The default below points at a folder next to
+# this script's own decision_logs, which does not exist until you add it -
+# on purpose, so a missing/wrong path fails loudly via the check in main()
+# instead of silently reading the wrong run. Point
+# SCOPE_ABLATION_SIM_RESULTS_DIR at wherever your ablation run's raw logs
+# actually live.
 SIM_RESULTS_DIR = Path(
-    "/Users/nancyboughannam/Documents/ThreeBrains/sim_results"
+    os.getenv("SCOPE_ABLATION_SIM_RESULTS_DIR", str(BASE_DIR / "ablation_results_final" / "sim_results"))
 )
 
-# This is the parent directory that contains decision_logs.
+# This is the parent directory that contains decision_logs. Checked into the
+# repository under FLaskAPIs/ablation_results_final/.
 DECISION_RESULTS_DIR = Path(
-    "/Users/nancyboughannam/PycharmProjects/FLaskAPIs/ablation_results_final"
+    os.getenv("SCOPE_ABLATION_DECISION_DIR", str(BASE_DIR / "ablation_results_final"))
 )
 
 OUTPUT_DIR = Path(
-    "/Users/nancyboughannam/PycharmProjects/FLaskAPIs/ablation_figures_final"
+    os.getenv("SCOPE_ABLATION_OUTPUT_DIR", str(BASE_DIR / "ablation_figures_final"))
 )
 
 VEHICLES = 1800
@@ -91,7 +111,7 @@ CHURN_TOLERANCE = 1e-12
 #     rt_opt_iteration1_seed20260829_n1800_iteration_1.csv
 # load_decisions() scans every CSV recursively and uses its `variant` column,
 # so both filename styles are intentionally supported.
-# ===== HARD-CODED ABLATION LOCATIONS CHANGE END =====
+# ===== REPO-RELATIVE ABLATION LOCATIONS CHANGE END =====
 
 
 def _iteration_from_text(value: object) -> int | None:

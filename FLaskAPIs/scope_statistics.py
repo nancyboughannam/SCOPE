@@ -41,7 +41,14 @@ import zipfile
 import numpy as np
 from scipy.stats import rankdata
 
-DEFAULT_INPUT = '/Users/nancyboughannam/Documents/ThreeBrains/sim_results/full study'
+# Not checked into the repository - this is EdgeCloudSim's raw simulator
+# output (*_GENERIC.log files), produced by actually running the simulator
+# (see the README's reproduction section). Point --input at wherever your
+# own run's output lives; this default assumes the conventional layout next
+# to a sibling ThreeBrains checkout.
+DEFAULT_INPUT = str(
+    Path(__file__).resolve().parent.parent / "ThreeBrains" / "sim_results" / "full study"
+)
 NAME = re.compile(r'SIMRESULT_ITS_SCENARIO_(.+)_(\d+)DEVICES_(.+)_GENERIC\.log$')
 
 

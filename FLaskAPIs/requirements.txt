@@ -1,0 +1,18 @@
+# Python dependencies for the SCOPE optimization services and analysis
+# scripts (everything in FLaskAPIs/).
+#
+# Versions marked "confirmed" are pinned to what scope_candidate_xgboost_results/model_manifest.json
+# records as actually used to train the models and produce the paper's
+# Table IV. Everything else is a minimum version inferred from the import
+# statements in this directory; it has NOT been verified against the exact
+# versions used for the paper's results, so treat these as a starting point
+# and pin exact versions yourself once your environment is working.
+
+flask>=2.3
+ortools>=9.7
+numpy>=1.24
+pandas==2.3.3        # confirmed: matches model_manifest.json
+xgboost==3.1.2        # confirmed: matches model_manifest.json
+scikit-learn==1.8.0    # confirmed: matches model_manifest.json
+scipy>=1.10
+matplotlib>=3.7

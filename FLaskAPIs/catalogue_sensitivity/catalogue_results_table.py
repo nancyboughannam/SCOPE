@@ -29,11 +29,14 @@ Full repeats at different subset seeds are redundant: select the lowest subset
 seed, verify performance/churn agree, and record the excluded repeat in audit.txt.
 Duplicates within the same identity are rejected. No silent missing-run skipping.
 
+Example (paths are illustrative - point these at your own simulator output
+and this repo's FLaskAPIs/catalogue_runs directory):
+
 python3 catalogue_sensitivity/catalogue_results_table.py \
-  --sim-root "/Users/nancyboughannam/Documents/ThreeBrains/sim_results" \
-  --decision-root "/Users/nancyboughannam/PycharmProjects/FLaskAPIs/catalogue_runs" \
+  --sim-root "/path/to/ThreeBrains/sim_results" \
+  --decision-root "/path/to/FLaskAPIs/catalogue_runs" \
   --iterations 5 \
-  --output "/Users/nancyboughannam/PycharmProjects/FLaskAPIs/catalogue_table_2_iterations"
+  --output "/path/to/FLaskAPIs/catalogue_table_2_iterations"
 
 
 """

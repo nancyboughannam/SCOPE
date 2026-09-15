@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Java / IDE
+*.class
+.idea/
+*.iml
+.vscode/
+
+# OS / editor cruft
+*.swp
+*~
+
+# Local scratch output (does not affect the checked-in result artifacts
+# under ablation_results_final/, scope_candidate_dataset/, catalogue_runs/,
+# lambda_table_output/, rmax_test/, lambda_test/, which are the evidence
+# behind the paper's tables and are intentionally tracked)
+/FLaskAPIs/scope_ablation_results/

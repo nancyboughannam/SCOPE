@@ -19,7 +19,12 @@ Desktop.ini
 # Build / Output folders
 # ----------------------------
 bin
-sim_results
+
+# NOTE: "sim_results" used to be ignored here (inherited from upstream
+# EdgeCloudSim, where it's disposable build output). For SCOPE it holds the
+# actual result data behind the paper's figures, so it's deliberately NOT
+# ignored anymore. See the root README for how the large files in it
+# (anything too big for a normal git push) are hosted instead.
 
 # ----------------------------
 # IDE / Editor Settings
