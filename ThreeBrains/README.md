@@ -1,3 +1,12 @@
+> **This is a fork, vendored inside the [SCOPE](../README.md) repository.**
+> Everything below this note is the original upstream EdgeCloudSim
+> documentation, kept as-is. SCOPE's own additions live in
+> `src/edu/boun/edgecloudsim/applications/sample_app5/` (notably
+> `VehicularEdgeOrchestrator.java`, which implements SCOPE's edge-steering
+> logic and RAIDER-TRAX). This directory remains licensed GPLv3 — see
+> `LICENSE` here and `../NOTICE.md` for what that means. For SCOPE's own
+> setup and reproduction instructions, see the [root README](../README.md).
+
 # EdgeCloudSim
 
 [![GitHub stars](https://img.shields.io/github/stars/CagataySonmez/EdgeCloudSim?style=for-the-badge)](https://github.com/CagataySonmez/EdgeCloudSim/stargazers)
