@@ -169,9 +169,9 @@ checked in).
 | Paper artifact | Already-computed result in this repo | Script that produces it |
 |---|---|---|
 | Table IV (XGBoost prediction accuracy) | `FLaskAPIs/scope_candidate_xgboost_results/model_metrics.csv` and `model_manifest.json` | `python3 train_candidate_xgboost.py` (reads `scope_candidate_dataset/candidate_dataset_{train,validation,test}.csv`, built by `prepare_candidate_dataset.py`) |
-| Table V (λ sensitivity) | `FLaskAPIs/lambda_table_output/lambda_sensitivity_table.tex` and `lambda_sensitivity_summary.csv` | `python3 lambda_sensitivity_table.py` (reads `lambda_test/decision_logs/`) |
+| Table V (λ sensitivity) | `FLaskAPIs/lambda_table_output/lambda_sensitivity_table.tex` and `lambda_sensitivity_summary.csv` | `python3 lambda_sensitivity_table.py --decision-input "Lambda testing_Flask.zip" --results-input "Lambda testing_Simresults.zip" --output-dir lambda_table_output --selected-lambda 0.20` (run from `FLaskAPIs/`; both inputs are checked in as zips, no extraction needed) |
 | Table VI (paired baseline comparison, Wilcoxon + bootstrap CIs) | `FLaskAPIs/scope_statistics_results/` (generated on run; not pre-populated in this repo — see note below) | `python3 scope_statistics.py --input <path to your sim_results>` |
-| Table VII (ablation: SCOPE vs. SoftCost-OPT vs. Performance-only vs. RT-OPT) | `FLaskAPIs/ablation_figures_final/table1_ablation.tex` | `python3 plot_ablation_results.py` (reads `ablation_results_final/decision_logs/` plus raw simulator logs) |
+| Table VII (ablation: SCOPE vs. SoftCost-OPT vs. Performance-only vs. RT-OPT) | `FLaskAPIs/ablation_figures_final/table1_ablation.tex` | `python3 plot_ablation_results.py` — reads `ablation_results_final/decision_logs/` (checked in) plus raw simulator logs; extract `ThreeBrains/sim_results/Ablation test.zip` into `FLaskAPIs/ablation_results_final/sim_results/` first |
 | Table VIII (candidate-catalogue size sensitivity) | `FLaskAPIs/catalogue_runs/pilot_{full,half,quarter}_*` (raw decision logs; the paper's summary table itself is not pre-built in this repo) | `python3 catalogue_sensitivity/catalogue_results_table.py --sim-root ... --decision-root FLaskAPIs/catalogue_runs --output ...` |
 | Fig. 3 (Δ*T* sensitivity) | Not pre-built in this repo | Requires re-running the simulator at ΔT ∈ {15, 30, 60, 90}s. This isn't a config-file setting — ΔT is hardcoded as DELTA_T in ThreeBrains/src/edu/boun/edgecloudsim/applications/sample_app5/VehicularEdgeOrchestrator.java (line 71, currently 60.0). Edit that constant, re-run ./compile.sh, then run the simulator as above — once per ΔT value.|
 | Fig. 4 / Fig. 5 (scalability curves, service time, VM utilization) | `ThreeBrains/sim_results/full study - 10 iterations/ite1` … `ite10` (raw EdgeCloudSim logs for the full 100–1,800 vehicle sweep, all 4 main-comparison policies, 10 iterations) | The standard EdgeCloudSim MATLAB plotters in `ThreeBrains/scripts/sample_app5/matlab/` (`plotAvgFailedTask.m`, `plotAvgServiceTime.m`, `plotAvgVmUtilization.m`) read this log format directly. We have not confirmed these produce pixel-identical output to the paper's figures (they may have been adapted), but they're the standard tool for this data and a reasonable starting point. |
@@ -187,14 +187,22 @@ things: the optimizer's own decision logs (checked into this repo, e.g.
   sweep — 10 iterations × all 4 main-comparison policies × 100–1,800
   vehicles — is checked in under
   `ThreeBrains/sim_results/full study - 10 iterations/`.
-- **Ablation study (Table VII):** its raw `ite1…ite10` logs live in a
-  separate location from the main comparison above — **path to be
-  confirmed and filled in here.** `plot_ablation_results.py`'s
-  `SIM_RESULTS_DIR` still needs to be pointed at it once that's settled
-  (it currently defaults to the main-comparison folder, which is the
-  wrong data for this table).
-- **λ sensitivity, R_max sensitivity:** raw logs not yet mapped to a
-  path in this repo.
+- **Ablation study (Table VII):** its raw simulator logs are checked in
+  as `ThreeBrains/sim_results/Ablation test.zip` — extract this into
+  `FLaskAPIs/ablation_results_final/sim_results/` before running
+  `plot_ablation_results.py`; that's where its `SIM_RESULTS_DIR` looks by
+  default. The matching decision logs are already checked in at
+  `FLaskAPIs/ablation_results_final/decision_logs/`.
+- **λ sensitivity (Table V):** fully reproducible as-is — both required
+  inputs (`Lambda testing_Flask.zip` and `Lambda testing_Simresults.zip`)
+  are checked into `FLaskAPIs/`, and `lambda_sensitivity_table.py` reads
+  zip archives directly, no extraction needed.
+- **R_max sensitivity:** discussed in the paper (Section V-D-2) in prose
+  only — there is no dedicated table for it, so there's no script here to
+  reproduce one. Supporting raw data is checked in at
+  `ThreeBrains/sim_results/Rmax testing.zip` and
+  `FLaskAPIs/rmax_test/decision_logs/` for anyone who wants to look at it
+  directly.
 
 If any of the above is still missing for a given table, regenerating it
 from absolute scratch means actually running the simulator sweep yourself,
